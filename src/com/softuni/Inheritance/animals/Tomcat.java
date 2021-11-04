@@ -1,4 +1,4 @@
-package animals;
+package com.softuni.Inheritance.animals;
 
 public class Tomcat extends Cat{
     private static final String GENDER = "Male";

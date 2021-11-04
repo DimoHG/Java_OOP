@@ -1,4 +1,4 @@
-package animals;
+package com.softuni.Inheritance.animals;
 
 public class Dog extends Animal{
     public Dog(String name, int age, String gender) {

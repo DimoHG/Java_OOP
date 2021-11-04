@@ -1,4 +1,4 @@
-package animals;
+package com.softuni.Inheritance.animals;
 
 import java.util.Scanner;
 
