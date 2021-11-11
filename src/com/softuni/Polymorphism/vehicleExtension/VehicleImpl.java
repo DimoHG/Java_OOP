@@ -1,14 +1,16 @@
-package com.softuni.Polymorphism.vehicles;
+package com.softuni.Polymorphism.vehicleExtension;
 
 import java.text.DecimalFormat;
 
-public abstract class VehicleImpl implements Vehicle {
+public class VehicleImpl implements Vehicle {
     private double fuelQuantity;
     private double fuelConsumption;
+    private double tankCapacity;
 
-    public VehicleImpl(double fuelQuantity, double fuelConsumption) {
+    protected VehicleImpl(double fuelQuantity, double fuelConsumption, double tankCapacity) {
         this.fuelQuantity = fuelQuantity;
         this.setFuelConsumption(fuelConsumption);
+        this.tankCapacity = tankCapacity;
     }
 
     @Override
@@ -24,13 +26,22 @@ public abstract class VehicleImpl implements Vehicle {
     }
 
     @Override
-    public String toString() {
-        return String.format("%s: %.2f", this.getClass().getSimpleName(), this.fuelQuantity);
+    public void refuel(double liters) {
+        if(liters <= 0 ) {
+            throw new IllegalArgumentException("Fuel must be a positive number");
+        }
+
+        double newFuelQuantity = this.fuelQuantity + liters;
+        if(newFuelQuantity > this.tankCapacity){
+            throw new IllegalArgumentException("Cannot fit fuel in tank");
+        }
+
+        this.fuelQuantity += liters;
     }
 
     @Override
-    public void refuel(double liters) {
-        this.fuelQuantity += liters;
+    public String toString() {
+        return String.format("%s: %.2f", this.getClass().getSimpleName(), this.fuelQuantity);
     }
 
     public double getFuelQuantity() {
