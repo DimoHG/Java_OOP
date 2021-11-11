@@ -6,17 +6,22 @@ public class Bus extends VehicleImpl {
 
     public Bus(double fuelQuantity, double fuelConsumption, double tankCapacity) {
         super(fuelQuantity, fuelConsumption, tankCapacity);
-        isEmpty = false;
-    }
-
-    @Override
-    public void setFuelConsumption(double fuelConsumption) {
-        if (!this.isEmpty) {
-            super.setFuelConsumption(fuelConsumption + AC_ADDITIONAL_CONSUMPTION);
-        }
+        isEmpty = true;
     }
 
     public void setEmpty(boolean empty) {
-        isEmpty = empty;
+        if (this.isEmpty == empty) {
+            return;
+        }
+
+        if(this.isEmpty && !empty){
+            super.setFuelConsumption(super.getFuelConsumption() + AC_ADDITIONAL_CONSUMPTION);
+        }
+
+        if(!this.isEmpty && empty){
+            super.setFuelConsumption(super.getFuelConsumption() - AC_ADDITIONAL_CONSUMPTION);
+        }
+
+        this.isEmpty = empty;
     }
 }
