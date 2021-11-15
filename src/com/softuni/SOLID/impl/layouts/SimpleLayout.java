@@ -1,4 +1,4 @@
-package com.softuni.SOLID.impl;
+package com.softuni.SOLID.impl.layouts;
 
 import com.softuni.SOLID.enums.ReportLevel;
 import com.softuni.SOLID.interfaces.Layout;
